@@ -1,15 +1,15 @@
 Package.describe({
   name: "gwendall:hovercard",
-  summary: "Reactive popover based on Bootstrap 3",
+  summary: "Simple, reactive hovercards",
   version: "0.1.0"
 });
 
 Package.on_use(function (api, where) {
 
   api.use([
-    "jquery",
-    "templating",
-    "gwendall:body-events"
+    "jquery@1.11.3",
+    "templating@1.0.11",
+    "gwendall:body-events@0.1.3"
   ], "client");
 
 	api.add_files([
