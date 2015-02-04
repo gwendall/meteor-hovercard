@@ -25,9 +25,11 @@ Simply wrap the element that should trigger an hovercard with an {{#hovercard}} 
 Options
 -----
 
-Pass those options as parameters to the {{#hovercard}} block.
+Pass those options as parameters to the {{#hovercard}} block.  
+
+
 Option | Type | Default | Values | Description
-----|------|---- | ----
+----|------|----|----|----
 template | string | null | * | The template that will be used in the hovercard
 data | * | Blaze data context | * | The data that will be passed to the hovercard template (if not specified, the Blaze data context of the triggering element will be passed)
 position | string | vertical | vertical \| horizontal | Whether the hovercard should be displayed horizontally (on the left / right of the element) or vertically (top / bottom)
