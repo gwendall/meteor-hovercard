@@ -17,7 +17,7 @@ How to
 
 Simply wrap the element that should trigger an hovercard with an {{#hovercard}} Spacebars block.
 ``` html
-{{#hovercard template="someTemplate" position="horizontal" trigger="hover"}}
+{{#hovercard template="someTemplate" direction="horizontal" trigger="hover"}}
   <a href="#">A wild hovercard appears on hover!</a>
 {{/hovercard}}
 ```
@@ -32,7 +32,7 @@ Option | Type | Default | Values | Description
 ----|------|----|----|----
 template | string | null | * | The template that will be used in the hovercard
 data | * | Blaze data context | * | The data that will be passed to the hovercard template (if not specified, the Blaze data context of the triggering element will be passed)
-position | string | vertical | vertical \| horizontal | Whether the hovercard should be displayed horizontally (on the left / right of the element) or vertically (top / bottom)
+direction | string | vertical | vertical \| horizontal | Whether the hovercard should be displayed horizontally (on the left / right of the element) or vertically (top / bottom)
 trigger | string | hover | hover \| click |The action upon which the hovercard appears
 
 Notes
