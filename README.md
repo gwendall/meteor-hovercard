@@ -3,7 +3,8 @@ Meteor Hovercard
 
 Simple, reactive hovercards for Meteor inspired by Facebook hovercards.
 
-[Demo](https://github.com/gwendall/meteor-hovercard-demo)
+[Demo](https://hovercard-demo.meteor.com)
+[Demo code](https://github.com/gwendall/meteor-hovercard-demo)
 
 Installation
 ------------
