@@ -1,0 +1,130 @@
+.hovercard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1060;
+  display: none;
+  padding: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: left;
+  white-space: normal;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+          background-clip: padding-box;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: 2px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+}
+.hovercard.top {
+  margin-top: -10px;
+}
+.hovercard.right {
+  margin-left: 10px;
+}
+.hovercard.bottom {
+  margin-top: 10px;
+}
+.hovercard.left {
+  margin-left: -10px;
+}
+.hovercard-title {
+  padding: 8px 14px;
+  margin: 0;
+  font-size: 14px;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #ebebeb;
+  border-radius: 5px 5px 0 0;
+}
+.hovercard-content {
+  padding: 0;
+}
+.hovercard > .arrow,
+.hovercard > .arrow:after {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+.hovercard > .arrow {
+  border-width: 11px;
+}
+.hovercard > .arrow:after {
+  content: "";
+  border-width: 10px;
+}
+.hovercard.top > .arrow {
+  top: auto !important;
+  bottom: -11px !important;
+  left: 50%;
+  margin-left: -11px;
+  border-top-color: #999;
+  border-top-color: rgba(0, 0, 0, .25);
+  border-bottom-width: 0;
+}
+.hovercard.top > .arrow:after {
+  top: auto !important;
+  bottom: 1px !important;
+  margin-left: -10px;
+  content: " ";
+  border-top-color: #fff;
+  border-bottom-width: 0;
+}
+.hovercard.right > .arrow {
+  top: 50%;
+  left: -11px;
+  margin-top: -11px;
+  border-right-color: #999;
+  border-right-color: rgba(0, 0, 0, .25);
+  border-left-width: 0;
+}
+.hovercard.right > .arrow:after {
+  bottom: -10px;
+  left: 1px;
+  content: " ";
+  border-right-color: #fff;
+  border-left-width: 0;
+}
+.hovercard.bottom > .arrow {
+  top: -11px !important;
+  left: 50%;
+  margin-left: -11px;
+  border-top-width: 0;
+  border-bottom-color: #999;
+  border-bottom-color: rgba(0, 0, 0, .25);
+}
+.hovercard.bottom > .arrow:after {
+  top: 1px !important;
+  margin-left: -10px;
+  content: " ";
+  border-top-width: 0;
+  border-bottom-color: #fff;
+}
+.hovercard.left > .arrow {
+  top: 50%;
+  right: -11px;
+  margin-top: -11px;
+  border-right-width: 0;
+  border-left-color: #999;
+  border-left-color: rgba(0, 0, 0, .25);
+}
+.hovercard.left > .arrow:after {
+  right: 1px;
+  bottom: -10px;
+  content: " ";
+  border-right-width: 0;
+  border-left-color: #fff;
+}
+.hovercard.top .arrow,
+.hovercard.bottom .arrow {
+  left: 20px;
+}
+.hovercard.right-float .arrow {
+  left: auto !important;
+  right: 10px;
+}
