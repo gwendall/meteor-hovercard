@@ -34,7 +34,7 @@ var showHovercard = function(element, data, timeout) {
     container.empty();
     Blaze.renderWithData(tpl, data, container.get(0));
 
-    Hovercard._positionHovercard(element);
+    HoverCard._positionHovercard(element);
     hovercard.show();
 
   }, timeout);
@@ -45,7 +45,7 @@ var hideHovercard = function() {
   hovercard.hide();
 }
 
-Hovercard._positionHovercard = function(element) {
+HoverCard._positionHovercard = function(element) {
 
   var elementOffset = element.offset();
   var elementOffsetTop = elementOffset.top;
