@@ -34,7 +34,7 @@ var showHovercard = function(element, data, timeout) {
     container.empty();
     Blaze.renderWithData(tpl, data, container.get(0));
 
-    positionHovercard(element);
+    Hovercard._positionHovercard(element);
     hovercard.show();
 
   }, timeout);
@@ -45,7 +45,7 @@ var hideHovercard = function() {
   hovercard.hide();
 }
 
-var positionHovercard = function(element) {
+Hovercard._positionHovercard = function(element) {
 
   var elementOffset = element.offset();
   var elementOffsetTop = elementOffset.top;
@@ -198,6 +198,9 @@ Template.body.events({
   "mouseleave .hovercard": function(e, data) {
     hovercardIsHovered = false;
   },
+  "scroll": function() {
+    console.log("Scrolling...");
+  }
 });
 
 Template.hovercard.rendered = function() {
@@ -207,6 +210,9 @@ Template.hovercard.rendered = function() {
   element.attr("data-direction", tpl.data.direction || "y");
   element.attr("data-trigger", tpl.data.trigger || "hover");
 
-  var data = serializeData(tpl.data.data);
-  element.attr("data-params", data);
+  Tracker.autorun(function() {
+    var data = serializeData(tpl.data.data);
+    element.attr("data-params", data);
+  });
+
 }
