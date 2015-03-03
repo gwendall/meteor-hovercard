@@ -19,7 +19,7 @@ var arrowMargin = 15;
 var arrowTopDefault = 20;
 var arrowLeftDefault = 20;
 
-var showHovercard = function(element, data, timeout) {
+var showHovercard = function(element, data, timeout, clickPosition) {
 
   timeout = isNaN(parseInt(timeout)) ? hovercardDelayShow : timeout;
 
@@ -34,7 +34,7 @@ var showHovercard = function(element, data, timeout) {
     container.empty();
     Blaze.renderWithData(tpl, data, container.get(0));
 
-    HoverCard._positionHovercard(element);
+    HoverCard._positionHovercard(element, clickPosition);
     hovercard.show();
 
   }, timeout);
@@ -45,7 +45,7 @@ var hideHovercard = function() {
   hovercard.hide();
 }
 
-HoverCard._positionHovercard = function(element) {
+HoverCard._positionHovercard = function(element, clickPosition) {
 
   var elementOffset = element.offset();
   var elementOffsetTop = elementOffset.top;
@@ -93,17 +93,20 @@ HoverCard._positionHovercard = function(element) {
       right = $(window).width() - elementOffset.left + arrowMargin - HoverCard.marginX;
     }
 
+    // #TODO fix positioning
     var arrowTop = arrowTopDefault;
+    elementOffsetTop = clickPosition && clickPosition.top ? clickPosition.top - 30 : elementOffsetTop;
     var canBeAlignedTop = ($(window).height() + $(window).scrollTop() - elementOffset.top > hovercard.outerHeight());
     if (canBeAlignedTop) {
       top = Math.max(elementOffsetTop, $(window).scrollTop()) + 2;
-      arrowTop = elementOffset.top - top + element.outerHeight() / 2;
+      arrowTop = elementOffsetTop - top + element.outerHeight() / 2;
       arrowTop = Math.max(arrowTop, arrowMargin);
     } else {
       top = $(window).height() + $(window).scrollTop() - hovercard.outerHeight() - HoverCard.marginY;
       arrowTop = elementOffset.top - top + element.outerHeight() / 2;
       arrowTop = Math.min(arrowTop, hovercard.outerHeight() - arrowTopDefault);
     }
+    arrowTop = clickPosition && clickPosition.top ? clickPosition.top - top : arrowTop;
     hovercard.find(".arrow").css({ top: arrowTop });
   }
 
@@ -171,13 +174,14 @@ Template.body.events({
   },
   "click [data-hovercard]": function(e, data) {
     hideHovercard();
+    var clickPosition = { left: e.pageX, top: e.pageY };
     var element = $(e.currentTarget);
     var isTriggered = (element.attr("data-trigger") === "click");
     if (!isTriggered) return;
     e.preventDefault();
 
     data = unserializeData(element.attr("data-params")) || data;
-    showHovercard(element, data, 0);
+    showHovercard(element, data, 0, clickPosition);
   },
   "click": function(e, data) {
     hideHovercard();
