@@ -201,9 +201,6 @@ Template.body.events({
   },
   "mouseleave .hovercard": function(e, data) {
     hovercardIsHovered = false;
-  },
-  "scroll": function() {
-    console.log("Scrolling...");
   }
 });
 
