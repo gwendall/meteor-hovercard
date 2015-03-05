@@ -27,7 +27,7 @@ var showHovercard = function(element, data, timeout, clickPosition) {
 
     if (!hovercardIsHovered) hideHovercard();
 
-    var container = hovercard.find(".hovercard-content");
+    var container = $(".hovercard-content", hovercard);
     var tplName = element.attr("data-hovercard");
     var tpl = Template[tplName];
 
@@ -43,6 +43,11 @@ var showHovercard = function(element, data, timeout, clickPosition) {
 
 var hideHovercard = function() {
   hovercard.hide();
+  var container = $(".hovercard-content", hovercard), view;
+  container.children().each(function() {
+    view = Blaze.getView($(this).get(0));
+    Blaze.remove(view);
+  });
 }
 
 HoverCard._positionHovercard = function(element, clickPosition) {
@@ -173,7 +178,10 @@ Template.body.events({
 
   },
   "click [data-hovercard]": function(e, data) {
-    hideHovercard();
+    if ($(".hovercard").is(":visible")) {
+      setTimeout(hideHovercard, 0);
+      return;
+    }
     var clickPosition = { left: e.pageX, top: e.pageY };
     var element = $(e.currentTarget);
     var isTriggered = (element.attr("data-trigger") === "click");
@@ -181,20 +189,16 @@ Template.body.events({
     e.preventDefault();
 
     data = unserializeData(element.attr("data-params")) || data;
-    showHovercard(element, data, 0, clickPosition);
+    setTimeout(function() {
+      showHovercard(element, data, 0, clickPosition);
+    }, 0);
+
   },
   "click": function(e, data) {
+
+    if ($(e.target).parents(".hovercard").length) return;
     hideHovercard();
-  },
-  "click .hovercard": function(e, data) {
-    e.stopPropagation();
-    if (!HoverCard.hideOnClick) return;
-    hovercardIsHovered = false;
-    hideHovercard();
-  },
-  "click .hovercard a": function(e, data) {
-    hovercardIsHovered = false;
-    hideHovercard();
+
   },
   "mouseenter .hovercard": function(e, data) {
     hovercardIsHovered = true;

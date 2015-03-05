@@ -1,7 +1,7 @@
 Package.describe({
   name: "gwendall:hovercard",
   summary: "Simple, reactive hovercards",
-  version: "0.1.4"
+  version: "0.1.5"
 });
 
 Package.on_use(function (api, where) {
